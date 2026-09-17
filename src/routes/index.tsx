@@ -1335,6 +1335,15 @@ function Index() {
           {/* Bottom bar */}
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
             <p>© 2026 VRL Cargo Packers &amp; Movers. All rights reserved.</p>
+            <div className="flex items-center gap-4">
+              <Link to="/privacy-policy" className="hover:text-slate-300 transition-colors">
+                Privacy Policy
+              </Link>
+              <span>•</span>
+              <Link to="/terms-of-service" className="hover:text-slate-300 transition-colors">
+                Terms of Service
+              </Link>
+            </div>
             <p>Trusted by 52,000+ families across India 🇮🇳</p>
           </div>
 

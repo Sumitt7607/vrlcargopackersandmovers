@@ -721,6 +721,15 @@ Please share an estimated price and available schedule.`;
               </a>
             </p>
             <p className="mt-2">© 2026 VRL Cargo Packers &amp; Movers. All rights reserved.</p>
+            <div className="mt-2 flex items-center gap-3 text-xs">
+              <Link to="/privacy-policy" className="hover:text-slate-200 transition-colors">
+                Privacy Policy
+              </Link>
+              <span>•</span>
+              <Link to="/terms-of-service" className="hover:text-slate-200 transition-colors">
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
