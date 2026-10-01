@@ -23,21 +23,17 @@ export function trackContactConversion(params?: { value?: number; currency?: str
   const value = params?.value ?? 1.0;
   const currency = params?.currency ?? "INR";
 
-  if (typeof window.gtag === "function") {
-    window.gtag("event", "conversion", {
-      send_to: GOOGLE_ADS_CONTACT_CONVERSION,
-      value,
-      currency,
-    });
-  } else if (Array.isArray(window.dataLayer)) {
-    window.dataLayer.push([
-      "event",
-      "conversion",
-      {
-        send_to: GOOGLE_ADS_CONTACT_CONVERSION,
-        value,
-        currency,
-      },
-    ]);
+  const win = window as any;
+  win.dataLayer = win.dataLayer || [];
+  if (typeof win.gtag !== "function") {
+    win.gtag = function () {
+      win.dataLayer.push(arguments);
+    };
   }
+
+  win.gtag("event", "conversion", {
+    send_to: GOOGLE_ADS_CONTACT_CONVERSION,
+    value,
+    currency,
+  });
 }
