@@ -119,6 +119,12 @@ function PrivacyPolicyPage() {
             <span className="text-orange-600 font-black border-b-2 border-orange-600 pb-1">
               Privacy Policy
             </span>
+            <Link
+              to="/contact"
+              className="hover:text-orange-600 transition-colors"
+            >
+              Contact
+            </Link>
           </nav>
 
           <div className="flex items-center gap-3">

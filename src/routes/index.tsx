@@ -36,6 +36,7 @@ import {
   ZoomIn,
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
+import { trackContactConversion } from "@/lib/gtag";
 
 import heroAllRelocation from "@/assets/hero-all-relocation.jpg";
 import homeShifting from "@/assets/home-shifting.jpg";
@@ -358,6 +359,9 @@ function QuoteForm({ compact = false }: { compact?: boolean }) {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    // Trigger Google Ads Contact Conversion
+    trackContactConversion();
+
     const message = `🚚 *VRL Cargo Packers & Movers - Quote Request*
 ------------------------------------------
 👤 *Name:* ${formData.name}
@@ -518,7 +522,11 @@ function Index() {
             <span>India's Trusted Packers Movers Company</span>
           </p>
           <div className="flex items-center gap-3 sm:gap-6">
-            <a href={`tel:${phone}`} className="flex items-center gap-1.5 hover:text-amber-100 transition-colors">
+            <a
+              href={`tel:${phone}`}
+              onClick={() => trackContactConversion()}
+              className="flex items-center gap-1.5 hover:text-amber-100 transition-colors"
+            >
               <Phone size={13} className="shrink-0" />
               <span>Call : +91 9350359213</span>
             </a>
@@ -549,9 +557,9 @@ function Index() {
             <a href="#gallery" className="hover:text-orange-600 transition-colors py-1">
               Gallery
             </a>
-            <a href="#contact" className="hover:text-orange-600 transition-colors py-1">
+            <Link to="/contact" className="hover:text-orange-600 transition-colors py-1">
               Contact
-            </a>
+            </Link>
           </nav>
           <div className="flex items-center gap-3">
             <a
@@ -632,12 +640,14 @@ function Index() {
                   href={`https://wa.me/${cleanPhone}?text=Hello%20VRL%20Cargo,%20I%20need%20a%20moving%20quote`}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() => trackContactConversion()}
                   className="btn-whatsapp inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 sm:px-6 py-2.5 sm:py-3.5 text-xs sm:text-sm font-extrabold text-white shadow-lg hover:bg-emerald-700 transition-all hover:scale-[1.02] active:scale-95"
                 >
                   <MessageCircle size={16} className="shrink-0 sm:size-[18px]" /> Instant WhatsApp Quote
                 </a>
                 <a
                   href={`tel:${phone}`}
+                  onClick={() => trackContactConversion()}
                   className="inline-flex items-center gap-2 rounded-xl border-2 border-slate-900 bg-slate-900 px-4 sm:px-6 py-2.5 sm:py-3.5 text-xs sm:text-sm font-extrabold text-white shadow-md hover:bg-slate-800 transition-all hover:scale-[1.01] active:scale-95"
                 >
                   <Phone size={16} className="text-orange-400 shrink-0 sm:size-[18px]" /> +91 93503 59213
@@ -696,6 +706,7 @@ function Index() {
             </div>
             <a
               href={`tel:${phone}`}
+              onClick={() => trackContactConversion()}
               className="call-ripple font-display text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white hover:text-amber-200 transition-colors"
             >
               9350359213
@@ -1364,6 +1375,7 @@ function Index() {
           href={`https://wa.me/${cleanPhone}?text=Hello%20VRL%20Cargo,%20I%20need%20a%20quote`}
           target="_blank"
           rel="noreferrer"
+          onClick={() => trackContactConversion()}
           className="flex flex-col sm:flex-row items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-extrabold text-slate-700 hover:text-emerald-600 transition-colors"
         >
           <MessageCircle size={15} className="text-emerald-600" />
@@ -1372,6 +1384,7 @@ function Index() {
         <div className="h-4 w-px bg-slate-200" />
         <a
           href={`tel:${phone}`}
+          onClick={() => trackContactConversion()}
           className="flex flex-col sm:flex-row items-center gap-1 px-2.5 py-1 text-[10px] sm:text-xs font-extrabold text-slate-700 hover:text-red-600 transition-colors"
         >
           <Phone size={15} className="text-red-600" />

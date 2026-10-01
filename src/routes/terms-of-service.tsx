@@ -120,6 +120,12 @@ function TermsOfServicePage() {
             >
               Privacy Policy
             </Link>
+            <Link
+              to="/contact"
+              className="hover:text-orange-600 transition-colors"
+            >
+              Contact
+            </Link>
           </nav>
 
           <div className="flex items-center gap-3">

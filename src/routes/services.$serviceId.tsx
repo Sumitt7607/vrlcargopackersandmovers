@@ -30,6 +30,7 @@ import {
   X,
 } from "lucide-react";
 import { useState, type FormEvent } from "react";
+import { trackContactConversion } from "@/lib/gtag";
 import { servicesData, type ServiceDetail } from "@/lib/servicesData";
 import vrlLogo from "@/assets/vrl-logo.png";
 
@@ -84,6 +85,10 @@ function ServiceDetailPage() {
 
   function handleQuoteSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    // Trigger Google Ads Contact Conversion
+    trackContactConversion();
+
     const msg = `🚚 *VRL Cargo Quote Request - ${service.title}*
 ------------------------------------------
 👤 *Name:* ${formData.name}
@@ -542,6 +547,7 @@ Please share an estimated price and available schedule.`;
                   href={directWhatsAppUrl}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() => trackContactConversion()}
                   className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-xs sm:text-sm font-black text-white shadow-md hover:bg-emerald-700 transition-all hover:scale-[1.01] active:scale-95"
                 >
                   <MessageCircle size={18} />
@@ -551,6 +557,7 @@ Please share an estimated price and available schedule.`;
                 {/* Red Call Now Button */}
                 <a
                   href={`tel:${phone}`}
+                  onClick={() => trackContactConversion()}
                   className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#b91c1c] px-5 py-3 text-xs sm:text-sm font-black text-white shadow-md hover:bg-[#991b1b] transition-all hover:scale-[1.01] active:scale-95"
                 >
                   <Phone size={18} />
@@ -740,6 +747,7 @@ Please share an estimated price and available schedule.`;
           href={directWhatsAppUrl}
           target="_blank"
           rel="noreferrer"
+          onClick={() => trackContactConversion()}
           className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-4 py-2 text-xs font-black text-white shadow-md hover:bg-emerald-700 transition-all active:scale-95"
         >
           <MessageCircle size={15} />
@@ -748,6 +756,7 @@ Please share an estimated price and available schedule.`;
 
         <a
           href={`tel:${phone}`}
+          onClick={() => trackContactConversion()}
           className="inline-flex items-center gap-1.5 rounded-full bg-[#b91c1c] px-4 py-2 text-xs font-black text-white shadow-md hover:bg-[#991b1b] transition-all active:scale-95"
         >
           <Phone size={15} />
